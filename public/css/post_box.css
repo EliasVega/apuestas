@@ -1,0 +1,79 @@
+@page {
+    margin-left: 0.5cm;
+    margin-right: 0.5cm;
+}
+body {
+    text-align: center;
+    margin: 0px;
+    padding: opx;
+    font-family: Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+.clearfix {
+    clear: both;
+    float: none;
+}
+
+#logo {
+    margin: auto;
+}
+
+#logo img {
+    display: block;
+    width: 220px;
+    height: 80px;
+    margin-top: 5px;
+}
+
+.content_postbox {
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.content_postbox p {
+    font-size: 10px;
+}
+
+header {
+    width: 100%;
+    border-top: 2px solid #c6cccf;
+    border-bottom: 2px solid #c6cccf;
+}
+
+.user_postbox {
+    margin-top: 0px;
+    width: 100%;
+    font-size: 0.6em;
+    text-align: left;
+}
+
+table {
+    width: 100%;
+}
+
+table thead {
+    width: 100%;
+    margin: 0%;
+    padding: 0%;
+    border-bottom: 1px solid #7a7d7e;
+}
+
+table tbody {
+    width: 100%;
+    margin: 0%;
+    padding: 0%;
+    border-bottom: 1px solid #7a7d7e;
+}
+
+table thead tr th{
+    font-size: 0.6rem;
+}
+
+table tbody tr td {
+    font-size: 0.6rem;
+}
+
+table tbody tr td .tdright {
+    font-size: 0.6rem;
+}
