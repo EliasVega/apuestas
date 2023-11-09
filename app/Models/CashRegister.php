@@ -23,6 +23,9 @@ class CashRegister extends Model
         'out_total',
         'cash_in_total',
         'cash_out_total',
+        'value_play_total',
+        'nequi',
+        'credito',
         'status',
         'user_id',
 

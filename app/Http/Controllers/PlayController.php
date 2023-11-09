@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Play;
 use App\Http\Requests\StorePlayRequest;
 use App\Http\Requests\UpdatePlayRequest;
+use App\Models\CashRegister;
 use App\Models\Company;
 use App\Models\Lottery;
 use App\Models\LotteryPlay;
@@ -51,6 +52,12 @@ class PlayController extends Controller
      */
     public function create()
     {
+        $user = current_user();
+        $cashRegister = CashRegister::where('user_id', $user->id)->where('status', 'open')->first();
+        if ($cashRegister == null) {
+            toast('Debes tener una caja abierta para realizar operaiones.','success');
+            return back();
+        }
 
         $days = array("domingo","lunes","martes","miercoles","jueves","viernes","sábado");
         //$months = array("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");
@@ -89,28 +96,49 @@ class PlayController extends Controller
      */
     public function store(StorePlayRequest $request)
     {
-
+        $cashRegister = CashRegister::where('user_id', '=', current_user()->id)->where('status', '=', 'open')->first();
         //dd($request->all());
         //variables Request
         $number = $request->number;
         $value = $request->value;
+        $pay = $request->pay;
+        $paymentMethod = $request->payment_method;
+        $paymentForm = $request->payment_form;
 
         $play = new play;
         $play->total = $request->total;
-        $play->pay = $request->pay;
+        $play->pay = $pay;
         $play->date = $request->date;
+        $play->payment_form = $request->payment_form;
+        $play->payment_method = $request->payment_method;
         $play->lottery_id = $request->lottery_id;
         $play->save();
 
         for ($i=0; $i < count($number); $i++) {
             $lotteryPlay = new LotteryPlay();
-            $lotteryPlay->type = $request->type;
+            $lotteryPlay->type = $request->type[$i];
             $lotteryPlay->number = $number[$i];
             $lotteryPlay->value = $value[$i];
             $lotteryPlay->lottery_id = $request->lottery_id;
             $lotteryPlay->play_id = $play->id;
             $lotteryPlay->save();
+
+            $cashRegister->value_play_total += $value[$i];
+            $cashRegister->update();
         }
+
+        $cashRegister->in_total += $pay;
+        if ($paymentForm == 'contado') {
+            if ($paymentMethod == 'nequi') {
+                $cashRegister->nequi += $pay;
+            } else {
+                $cashRegister->cash_in_total += $pay;
+            }
+        } else {
+            $cashRegister->credito += $pay;
+        }
+        $cashRegister->update();
+
 
         session()->forget('play');
         session(['play' => $play->id]);

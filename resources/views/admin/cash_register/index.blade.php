@@ -11,8 +11,8 @@
                     @can('cashRegister.create')
                         <a href="cashRegister/create" class="btn btn-greenGrad btn-sm mb-2"><i class="fa fa-plus mr-2"></i> Agregar Caja</a>
                     @endcan
-                    @can('branch.index')
-                     <a href="{{ route('branch.index') }}" class="btn btn-blueGrad btn-sm"><i class="fas fa-undo-alt mr-2"></i>Inicio</a>
+                    @can('company.index')
+                     <a href="{{ route('company.index') }}" class="btn btn-blueGrad btn-sm"><i class="fas fa-undo-alt mr-2"></i>Inicio</a>
                     @endcan
                 </h5>
             </div>

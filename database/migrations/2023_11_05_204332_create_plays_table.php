@@ -17,6 +17,8 @@ return new class extends Migration
             $table->integer('total');
             $table->integer('pay');
             $table->date('date');
+            $table->enum('payment_form', ['contado', 'credito'])->default('contado');
+            $table->enum('payment_method', ['efectivo', 'nequi'] )->default('efectivo');
 
             $table->foreignId('lottery_id')->constrained();
 

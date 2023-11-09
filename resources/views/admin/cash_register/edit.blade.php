@@ -9,12 +9,6 @@
         <div class="box-danger">
             <div class="box-header with-border">
                 <h5 class="box-title">Cerrar Caja N°. : {{ $cashRegister->id }}</h5>
-                @can('cashRegister.index')
-                        <a href="{{ route('cashRegister.index') }}" class="btn btn-lightBlueGrad btn-sm ml-3"><i class="fas fa-undo-alt mr-2"></i>Regresar</a>
-                    @endcan
-                    @can('branch.index')
-                        <a href="{{ route('branch.index') }}" class="btn btn-blueGrad btn-sm ml-3"><i class="fas fa-undo-alt mr-2"></i>Inicio</a>
-                    @endcan
             </div>
             @if (count($errors)>0)
                 <div class="alert alert-danger">

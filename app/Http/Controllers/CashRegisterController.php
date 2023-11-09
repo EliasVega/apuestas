@@ -72,7 +72,13 @@ class CashRegisterController extends Controller
      */
     public function create()
     {
+        $users = current_user();
+        $openCashRegister = CashRegister::where('user_id', '=', $users->id)->where('status', '=', 'open')->first();
 
+        if ($openCashRegister) {
+            toast('Ya tienes una cja Abierta.','success');
+            return back();
+        }
         return view("admin.cash_register.create", compact('users'));
     }
 
@@ -84,22 +90,20 @@ class CashRegisterController extends Controller
      */
     public function store(StoreCashRegisterRequest $request)
     {
-        $user = Auth::user();
-        $branch = $user->branch_id;
-        $open = $request->user_open_id;
-        $code = $request->verification_code_open;
-        $openCashRegister = CashRegister::where('user_id', '=', $user->id)->where('status', '=', 'open')->first();
 
-            $cashRegister = new CashRegister();
-            $cashRegister->cash_initial = $request->cash_initial;
-            $cashRegister->in_cash = 0;
-            $cashRegister->out_cash = 0;
-            $cashRegister->in_total = 0;
-            $cashRegister->out_total = 0;
-            $cashRegister->cash_in_total = $request->cash_initial;
-            $cashRegister->cash_out_total = 0;
-            $cashRegister->user_id = $user->id;
-            $cashRegister->save();
+        $cashRegister = new CashRegister();
+        $cashRegister->cash_initial = $request->cash_initial;
+        $cashRegister->in_cash = 0;
+        $cashRegister->out_cash = 0;
+        $cashRegister->in_total = 0;
+        $cashRegister->out_total = 0;
+        $cashRegister->cash_in_total = $request->cash_initial;
+        $cashRegister->cash_out_total = 0;
+        $cashRegister->value_play_total = 0;
+        $cashRegister->nequi = 0;
+        $cashRegister->credito = 0;
+        $cashRegister->user_id = current_user()->id;
+        $cashRegister->save();
 
         Alert::success('Caja','Creada Satisfactoriamente.');
         return redirect("cashRegister");

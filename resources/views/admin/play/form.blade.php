@@ -56,4 +56,24 @@
             <input type="number" name="actual_payment" id="actual_payment" class="form-control" placeholder="V/aprox" readonly>
         </div>
     </div>
+    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+        <label for="payment_form">Forma</label>
+        <div class="select">
+            <select id="payment_form" name="payment_form" class="form-control selectpicker" data-live-search="true">
+                <option {{ ($play->payment_form ?? '') == '' ? "selected" : "" }} disabled>Forma</option>
+                    <option selected="selected" value="contado">CONTADO</option>
+                    <option value="credito">CREDITO</option>
+            </select>
+        </div>
+    </div>
+    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+        <label for="payment_method">Forma</label>
+        <div class="select">
+            <select id="payment_method" name="payment_method" class="form-control selectpicker" data-live-search="true">
+                <option {{ ($play->payment_method ?? '') == '' ? "selected" : "" }} disabled>Metodo</option>
+                    <option selected="selected" value="efectivo">EFECTIVO</option>
+                    <option value="nequi">NEQUI</option>
+            </select>
+        </div>
+    </div>
 </div>

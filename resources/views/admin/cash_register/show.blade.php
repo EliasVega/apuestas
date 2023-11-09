@@ -7,7 +7,7 @@
     <div class="row">
         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 offset-lg-4">
             <a href="{{ route('cashRegister.index') }}" class="btn btn-lightBlueGrad"><i class="fa fa-plus mr-2"></i>Regresar</a>
-            <a href="{{ route('branch.index') }}" class="btn btn-blueGrad"><i class="fa fa-plus mr-2"></i>Inicio</a>
+            <a href="{{ route('company.index') }}" class="btn btn-blueGrad"><i class="fa fa-plus mr-2"></i>Inicio</a>
         </div>
     </div>
     <div class="row">
@@ -51,6 +51,20 @@
                 <p>{{ number_format($cashRegister->out_total,2) }}</p>
             </div>
         </div>
+        <div class="col-12 col-md-4 col-sm-6">
+            <div class="form-group">
+                <label class="form-control-label" for="abono">Venta x nequi</label>
+                <p>{{ number_format($cashRegister->nequi,2) }}</p>
+            </div>
+        </div>
+        <div class="col-12 col-md-4 col-sm-6">
+            <div class="form-group">
+                <label class="form-control-label" for="abono">Venta a Credito</label>
+                <p>{{ number_format($cashRegister->credito,2) }}</p>
+            </div>
+        </div>
+    </div>
+    <div class="row">
         <div class="col-12 col-md-4 col-sm-6">
             <div class="form-group">
                 <label class="form-control-label" for="abono">Entrada de efectivo</label>

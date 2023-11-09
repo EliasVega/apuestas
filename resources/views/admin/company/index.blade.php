@@ -15,6 +15,7 @@
                     <a href="play" class="btn btn-greenGrad btn-sm"><i class="fa fa-plus"></i>Agregar Juego</a>
                 @endcan
                 <a href="lotteryPlay" class="btn btn-greenGrad btn-sm"><i class="fa fa-plus"></i>Numeros Jugados</a>
+                <a href="cashRegister" class="btn btn-greenGrad btn-sm"><i class="fa fa-plus"></i>Caja</a>
             </h5>
         </div>
     </div>

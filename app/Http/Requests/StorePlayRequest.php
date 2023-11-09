@@ -25,6 +25,8 @@ class StorePlayRequest extends FormRequest
             'total' => 'required|integer',
             'pay' => '',
             'date' => 'required|date',
+            'payment_form' => 'in:contado,credito',
+            'payment_method' => 'in:efectivo,nequi',
             'lottery_id' => 'required'
         ];
     }

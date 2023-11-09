@@ -101,12 +101,23 @@
                             </tr>
                         @endif
                         @if ($cashRegister->cash_initial > 0)
-                        <tr>
-                            <th colspan="4" ><p align="left" >EFECTIVO INICIAL:</p></th>
-                            <td align="right"><h2>${{number_format($cashRegister->cash_initial,2)}}</h2></td>
-                        </tr>
+                            <tr>
+                                <th colspan="4" ><p align="left" >EFECTIVO INICIAL:</p></th>
+                                <td align="right"><h2>${{number_format($cashRegister->cash_initial,2)}}</h2></td>
+                            </tr>
                         @endif
-
+                        @if ($cashRegister->nequi > 0)
+                            <tr>
+                                <th colspan="4" ><p align="left" >VENTAS NEQUI:</p></th>
+                                <td align="right"><h2>${{number_format($cashRegister->nequi,2)}}</h2></td>
+                            </tr>
+                        @endif
+                        @if ($cashRegister->credito > 0)
+                            <tr>
+                                <th colspan="4" ><p align="left" >VENTAS CREDITO:</p></th>
+                                <td align="right"><h2>${{number_format($cashRegister->credito,2)}}</h2></td>
+                            </tr>
+                        @endif
                         @if ($cashRegister->cash_in_total > 0)
                             <tr>
                                 <th colspan="4" ><p align="left" >TOTAL EFECTIVO:</p></th>

@@ -6,13 +6,14 @@
                     <tr>
                         <th>Eliminar</th>
                         <th>Editar</th>
+                        <th>Tipo</th>
                         <th>Numero</th>
                         <th>Valor</th>
                     </tr>
                 </thead>
                 <tfoot>
                     <tr>
-                        <th colspan="3">
+                        <th colspan="4">
                             <p align="right">TOTAL:</p>
                         </th>
                         <th class="thfoot">

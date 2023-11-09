@@ -19,6 +19,7 @@
     function add(){
         number = $("#number").val();
         price = $("#value").val();
+        type = $("#type").val();
         let numberProhibited = '';
         prohobiteds = {!! json_encode($prohibitedNumbers) !!};
         prohobiteds.forEach((value, i) => {
@@ -31,7 +32,7 @@
             if(number !="" && price!=""){
                 priceindex[cont] = price;
                 total = parseInt(total) + parseInt(price);
-                var row= '<tr class="selected" id="row'+cont+'"><td><button type="button" class="btn btn-danger btn-sm btndelete" onclick="deleterow('+cont+');"><i class="fas fa-trash"></i></button></td><td><button type="button" class="btn btn-warning btn-sm btnedit" onclick="editrow('+cont+');"><i class="far fa-edit"></i></button></td><td><input type="hidden" name="number[]" value="'+number+'">'+number+'</td> <td class="rightfoot"><input type="hidden" name="value[]"  value="'+price+'">'+new Intl.NumberFormat("es-CO").format(price)+'</td></tr>';
+                var row= '<tr class="selected" id="row'+cont+'"><td><button type="button" class="btn btn-danger btn-sm btndelete" onclick="deleterow('+cont+');"><i class="fas fa-trash"></i></button></td><td><button type="button" class="btn btn-warning btn-sm btnedit" onclick="editrow('+cont+');"><i class="far fa-edit"></i></button></td><td><input type="hidden" name="type[]" value="'+type+'">'+type+'</td><td><input type="hidden" name="number[]" value="'+number+'">'+number+'</td> <td class="rightfoot"><input type="hidden" name="value[]"  value="'+price+'">'+new Intl.NumberFormat("es-CO").format(price)+'</td></tr>';
                 cont++;
                 totals();
                 assess();

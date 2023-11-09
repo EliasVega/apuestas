@@ -25,6 +25,8 @@ class UpdatePlayRequest extends FormRequest
             'total' => 'required|numeric',
             'pay' => '',
             'date' => 'required|date',
+            'payment_form' => 'in:contado,credito',
+            'payment_method' => 'in:efectivo,nequi',
             'lottery_id' => 'required'
         ];
     }

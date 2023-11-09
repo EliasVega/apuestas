@@ -20,6 +20,8 @@ class Play extends Model
         'total',
         'pay',
         'date',
+        'payment_form',
+        'payment_method',
         'lottery_id'
     ];
 

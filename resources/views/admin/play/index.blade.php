@@ -26,6 +26,7 @@
                             <th>Id</th>
                             <th>Loteria</th>
                             <th>Valor</th>
+                            <th>Valor Jugado</th>
                             <th>Acciones</th>
                         </tr>
                     </thead>
@@ -65,6 +66,7 @@ $(document).ready(function ()
                 {data: 'id'},
                 {data: 'lottery'},
                 {data: 'pay', className: 'dt-body-right', render: $.fn.dataTable.render.number( '.', ',', 2, '$')},
+                {data: 'total', className: 'dt-body-right', render: $.fn.dataTable.render.number( '.', ',', 2, '$')},
                 {data: 'edit'},
             ],
             dom: 'Blfrtip',
