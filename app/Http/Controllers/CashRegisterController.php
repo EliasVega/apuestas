@@ -8,6 +8,7 @@ use App\Http\Requests\UpdateCashRegisterRequest;
 use App\Models\CashInflow;
 use App\Models\CashOutflow;
 use App\Models\Company;
+use App\Models\LotteryPlay;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
@@ -102,6 +103,7 @@ class CashRegisterController extends Controller
         $cashRegister->value_play_total = 0;
         $cashRegister->nequi = 0;
         $cashRegister->credito = 0;
+        $cashRegister->play = 0;
         $cashRegister->user_id = current_user()->id;
         $cashRegister->save();
 
@@ -126,6 +128,11 @@ class CashRegisterController extends Controller
         $cashInflows = CashInflow::where('user_id', current_user()->id)->whereBetween('created_at', [$from, $to])->get();
         $sumCashInflow = CashInflow::where('user_id', current_user()->id)->whereBetween('created_at', [$from, $to])->sum('cash');
 
+        $from     = $cashRegister->created_at;
+        $to       = $cashRegister->updated_at;
+
+        $lotteryPlays = LotteryPlay::whereBetween('created_at', [$from, $to])->get();
+        $lotteryPlayTotal = LotteryPlay::whereBetween('created_at', [$from, $to])->sum('value');
 
         return view('admin.cash_register.show', compact(
             'cashRegister',
@@ -134,7 +141,10 @@ class CashRegisterController extends Controller
             'sumCashOutflow',
 
             'cashInflows',
-            'sumCashInflow'
+            'sumCashInflow',
+
+            'lotteryPlays',
+            'lotteryPlayTotal'
         ));
     }
 
@@ -254,6 +264,9 @@ class CashRegisterController extends Controller
         $cashOutflows = CashOutflow::where('user_id', current_user()->id)->whereBetween('created_at', [$from, $to])->get();
         $sumCashOutflows = CashOutflow::where('user_id', current_user()->id)->whereBetween('created_at', [$from, $to])->sum('cash');
 
+        $lotteryPlays = LotteryPlay::whereBetween('created_at', [$from, $to])->get();
+        $lotteryPlayTotal = LotteryPlay::whereBetween('created_at', [$from, $to])->sum('value');
+
         $company = Company::findOrFail(1);
         $view = \view('admin.cash_register.cashRegisterPos', compact(
             'company',
@@ -264,6 +277,9 @@ class CashRegisterController extends Controller
 
             'cashOutflows',
             'sumCashOutflows',
+
+            'lotteryPlays',
+            'lotteryPlayTotal'
         ))->render();
 
             $pdf = App::make('dompdf.wrapper');

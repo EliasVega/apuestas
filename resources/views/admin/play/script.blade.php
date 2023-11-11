@@ -18,7 +18,7 @@
     //adicionar productos a la compra
     function add(){
         number = $("#number").val();
-        price = $("#value").val();
+        price = parseInt($("#value").val());
         type = $("#type").val();
         let numberProhibited = '';
         prohobiteds = {!! json_encode($prohibitedNumbers) !!};
@@ -32,7 +32,7 @@
             if(number !="" && price!=""){
                 priceindex[cont] = price;
                 total = parseInt(total) + parseInt(price);
-                var row= '<tr class="selected" id="row'+cont+'"><td><button type="button" class="btn btn-danger btn-sm btndelete" onclick="deleterow('+cont+');"><i class="fas fa-trash"></i></button></td><td><button type="button" class="btn btn-warning btn-sm btnedit" onclick="editrow('+cont+');"><i class="far fa-edit"></i></button></td><td><input type="hidden" name="type[]" value="'+type+'">'+type+'</td><td><input type="hidden" name="number[]" value="'+number+'">'+number+'</td> <td class="rightfoot"><input type="hidden" name="value[]"  value="'+price+'">'+new Intl.NumberFormat("es-CO").format(price)+'</td></tr>';
+                var row= '<tr class="selected" id="row'+cont+'"><td><button type="button" class="btn btn-danger btn-sm btndelete" onclick="deleterow('+cont+');"><i class="fas fa-trash"></i></button></td><td><button type="button" class="btn btn-warning btn-sm btnedit" onclick="editrow('+cont+');"><i class="far fa-edit"></i></button></td><td><input type="hidden" name="type[]" value="'+type+'">'+type+'</td><td><input type="hidden" name="number[]" value="'+number+'">'+number+'</td> <td class="rightfoot"><input type="hidden" name="value[]"  value="'+price+'">'+price+'</td></tr>';
                 cont++;
                 totals();
                 assess();
@@ -66,7 +66,8 @@
 
         $("#total_html").html("$ " + new Intl.NumberFormat("es-CO").format(total));
         $("#total").val(total);
-        $("#actual_payment").val(new Intl.NumberFormat("es-CO").format(total/1.1));
+        $("#actual_payment").val((total/110) *100);
+        $("#pay").val((total/110) *100);
     }
     function assess(){
 
@@ -99,8 +100,8 @@
             // Buscar datos en la row y asignar a campos del formulario:
             // Primera columna (0) tiene ID, segunda (1) tiene nombre, tercera (2) capacidad
             $("#contModal").val(index);
-            $("#numberModal").val(row.find("td:eq(2)").text());
-            $("#valueModal").val(row.find("td:eq(3)").text());
+            $("#numberModal").val(row.find("td:eq(3)").text());
+            $("#valueModal").val(row.find("td:eq(4)").text());
 
             // Mostrar modal
             $('#editModal').modal('show');
@@ -122,7 +123,7 @@
             priceindex[cont] = price;
             total = parseInt(total) + parseInt(price);
 
-            var row= '<tr class="selected" id="row'+cont+'"><td><button type="button" class="btn btn-danger btn-sm btndelete" onclick="deleterow('+cont+');"><i class="fas fa-trash"></i></button></td><td><button type="button" class="btn btn-warning btn-sm btnedit" onclick="editrow('+cont+');"><i class="far fa-edit"></i></button></td><td><input type="hidden" name="number[]" value="'+number+'">'+number+'</td> <td><input type="hidden" name="value[]"  value="'+price+'">'+price+'</td></tr>';
+            var row= '<tr class="selected" id="row'+cont+'"><td><button type="button" class="btn btn-danger btn-sm btndelete" onclick="deleterow('+cont+');"><i class="fas fa-trash"></i></button></td><td><button type="button" class="btn btn-warning btn-sm btnedit" onclick="editrow('+cont+');"><i class="far fa-edit"></i></button></td><td><input type="hidden" name="type[]" value="'+type+'">'+type+'</td><td><input type="hidden" name="number[]" value="'+number+'">'+number+'</td> <td class="rightfoot"><input type="hidden" name="value[]"  value="'+price+'">'+price+'</td></tr>';
             cont++;
 
             deleterow(contedit);

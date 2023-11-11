@@ -67,8 +67,9 @@ class PlayController extends Controller
         $prohibitedNumbers = [];
         $lottery1 = Lottery::where('day', $lotteryDay)->get();
         $lottery2 = Lottery::where('code', '7days')->get();
-        $lotteries = $lottery1->concat($lottery2);
+        //$lotteries = $lottery1->concat($lottery2);
         $prohibiteds = ProhibitedNumber::get();
+        $lotteries = Lottery::get();
         $date = Carbon::now();
         $year = $date->year;
         $month = $date->month;
@@ -137,6 +138,7 @@ class PlayController extends Controller
         } else {
             $cashRegister->credito += $pay;
         }
+        $cashRegister->play += $pay;
         $cashRegister->update();
 
 

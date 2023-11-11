@@ -32,7 +32,7 @@ body {
 }
 
 .content_postbox p {
-    font-size: 10px;
+    font-size: 1em;
 }
 
 header {
@@ -44,7 +44,7 @@ header {
 .user_postbox {
     margin-top: 0px;
     width: 100%;
-    font-size: 0.6em;
+    font-size: 0.8em;
     text-align: left;
 }
 
@@ -59,6 +59,14 @@ table thead {
     border-bottom: 1px solid #7a7d7e;
 }
 
+.uno {
+    width: 100px;
+}
+
+.dos {
+    width: 80px;
+}
+
 table tbody {
     width: 100%;
     margin: 0%;
@@ -67,13 +75,13 @@ table tbody {
 }
 
 table thead tr th{
-    font-size: 0.6rem;
+    font-size: 0.8rem;
 }
 
 table tbody tr td {
-    font-size: 0.6rem;
+    font-size: 0.8rem;
 }
 
 table tbody tr td .tdright {
-    font-size: 0.6rem;
+    font-size: 0.8rem;
 }

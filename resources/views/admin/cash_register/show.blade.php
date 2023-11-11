@@ -157,6 +157,45 @@
                 </div>
             </div>
         @endif
+        @if ($lotteryPlayTotal > 0)
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <strong class="tpdf">Numeros</strong>
+                </div>
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div>
+                    <table class="table table-striped table-bordered table-condensed table-hover">
+                        <thead>
+                            <tr class="bg-info">
+                                <th>id</th>
+                                <th>Fecha</th>
+                                <th>Loteria</th>
+                                <th>Numero</th>
+                                <th>Valor</th>
+                            </tr>
+                        </thead>
+                        <tfoot>
+                            <tr>
+                                <th  colspan="4"><p align="right">TOTAL:</p></th>
+                                <th><p align="right">${{ number_format($lotteryPlayTotal,2) }}</p></th>
+                            </tr>
+                        </tfoot>
+                        <tbody>
+                            @foreach($lotteryPlays as $lotteryPlay)
+                                <tr>
+                                    <td>{{ $lotteryPlay->id }}</td>
+                                    <td>{{ $lotteryPlay->created_at }}</td>
+                                    <td>{{ $lotteryPlay->lottery->name }}</td>
+                                    <td class="rightfoot">{{ $lotteryPlay->number }}</td>
+                                    <td class="rightfoot">$ {{ number_format($lotteryPlay->value,2) }}</td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        @endif
     </div>
 </main>
 @endsection

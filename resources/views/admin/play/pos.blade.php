@@ -11,7 +11,6 @@
 </head>
 
 <header id="header">
-
     <div class="center">
         <!--DATOS company -->
         <div class="company">
@@ -55,6 +54,12 @@
     <br>
     <footer>
     </footer>
+    <div class="center">
+        <!--DATOS company -->
+        <div class="company">
+            <p><strong class="spacing">.</strong></p>
+        </div>
+    </div>
 </body>
 
 </html>

@@ -141,6 +141,35 @@
                     </tfoot>
                 </table>
             </div>
+            @if ($lotteryPlayTotal > 0)
+                <div class="content_postbox">
+                    <p>JUEGO REALIZADO</p>
+                    <table>
+                        <thead class="theadreport">
+                            <tr>
+                                <th class="uno">Loteria</th>
+                                <th class="dos">Numero</th>
+                                <th class="dos">Valor</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($lotteryPlays as $lotteryPlay)
+                            <tr>
+                                <td>{{ $lotteryPlay->lottery->name }}</td>
+                                <td>{{ $lotteryPlay->number }}</td>
+                                <td align="right">$ {{ number_format($lotteryPlay->value,2)}}</td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <th  colspan="2"><p align="right">TOTAL:</p></th>
+                                <th><p align="right">${{ number_format($lotteryPlayTotal,2) }}</p></th>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            @endif
         </section>
         <br>
         <br>

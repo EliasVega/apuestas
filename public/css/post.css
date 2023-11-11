@@ -19,7 +19,8 @@ body {
     background: #fff;
 }
 #header {
-    /*height: 170px;*/
+    margin-top: 100px;
+    height: 100px;
     width: 100%;
     background: #ffffff;
     border-top: 2px solid #c0c0c0
@@ -163,6 +164,10 @@ footer {
     border: 1px solid #faf7f7;
     text-align: center;
     line-height: 35px;
+}
+
+.spacing {
+    margin-top: 100px;
 }
 
 

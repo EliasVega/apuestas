@@ -26,6 +26,7 @@ return new class extends Migration
             $table->decimal('cash_in_total',20,2);//total entradas efectivo
             $table->decimal('cash_out_total',20,2);//total salidas efectivo
             $table->decimal('value_play_total', 20,2);//valor de juego real
+            $table->decimal('play',20,2);//ventas por juegos
 
             $table->enum('status', ['open', 'close'])->default('open');
             $table->foreignId('user_id')->constrained()->onUpdate('cascade');
