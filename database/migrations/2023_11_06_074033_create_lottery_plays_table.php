@@ -16,7 +16,7 @@ return new class extends Migration
 
             $table->enum('type', ['pleno', 'combinado'])->default('pleno');
             $table->string('number', 4);
-            $table->integer('value');
+            $table->decimal('value',10,2);
 
             $table->foreignId('lottery_id')->constrained();
             $table->foreignId('play_id')->constrained();

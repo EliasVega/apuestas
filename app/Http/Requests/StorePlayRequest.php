@@ -22,7 +22,7 @@ class StorePlayRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'total' => 'required|integer',
+            'total' => 'required|numeric',
             'pay' => '',
             'date' => 'required|date',
             'payment_form' => 'in:contado,credito',

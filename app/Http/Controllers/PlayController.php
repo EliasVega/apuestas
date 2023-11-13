@@ -31,6 +31,7 @@ class PlayController extends Controller
     public function index(Request $request)
     {
         $play = session('play');
+
         if ($request->ajax()) {
             $plays = Play::get();
 

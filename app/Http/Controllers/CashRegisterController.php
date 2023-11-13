@@ -120,7 +120,8 @@ class CashRegisterController extends Controller
     public function show(CashRegister $cashRegister)
     {
         $user = current_user()->roles->pluck('name', 'name')->all();
-        $cashRegister = CashRegister::findOrFail($cashRegister->user_id);
+        //$cashRegister = CashRegister::findOrFail($cashRegister->user_id);
+        $cashRegister = CashRegister::where('user_id', current_user()->id)->where('status', 'open')->first();
         $from = $cashRegister->created_at;
         $to = $cashRegister->updated_at;
         $cashOutflows = CashOutflow::where('user_id', current_user()->id)->whereBetween('created_at', [$from, $to])->get();

@@ -31,8 +31,8 @@
         if (numberProhibited == '') {
             if(number !="" && price!=""){
                 priceindex[cont] = price;
-                total = parseInt(total) + parseInt(price);
-                var row= '<tr class="selected" id="row'+cont+'"><td><button type="button" class="btn btn-danger btn-sm btndelete" onclick="deleterow('+cont+');"><i class="fas fa-trash"></i></button></td><td><button type="button" class="btn btn-warning btn-sm btnedit" onclick="editrow('+cont+');"><i class="far fa-edit"></i></button></td><td><input type="hidden" name="type[]" value="'+type+'">'+type+'</td><td><input type="hidden" name="number[]" value="'+number+'">'+number+'</td> <td class="rightfoot"><input type="hidden" name="value[]"  value="'+price+'">'+price+'</td></tr>';
+                total = parseFloat(total) + parseFloat(price);
+                var row= '<tr class="selected" id="row'+cont+'"><td><button type="button" class="btn btn-danger btn-sm btndelete" onclick="deleterow('+cont+');"><i class="fas fa-trash"></i></button></td><td><button type="button" class="btn btn-warning btn-sm btnedit" onclick="editrow('+cont+');"><i class="far fa-edit"></i></button></td><td><input type="hidden" name="type[]" value="'+type+'">'+type+'</td><td><input type="hidden" name="number[]" value="'+number+'">'+number+'</td> <td class="rightfoot"><input type="hidden" name="value[]"  value="'+parseFloat(price)+'">'+new Intl.NumberFormat("es-CO").format(price)+'</td></tr>';
                 cont++;
                 totals();
                 assess();
@@ -63,7 +63,6 @@
         $("#value").val("");
     }
     function totals(){
-
         $("#total_html").html("$ " + new Intl.NumberFormat("es-CO").format(total));
         $("#total").val(total);
         $("#actual_payment").val((total/110) *100);
@@ -123,7 +122,7 @@
             priceindex[cont] = price;
             total = parseInt(total) + parseInt(price);
 
-            var row= '<tr class="selected" id="row'+cont+'"><td><button type="button" class="btn btn-danger btn-sm btndelete" onclick="deleterow('+cont+');"><i class="fas fa-trash"></i></button></td><td><button type="button" class="btn btn-warning btn-sm btnedit" onclick="editrow('+cont+');"><i class="far fa-edit"></i></button></td><td><input type="hidden" name="type[]" value="'+type+'">'+type+'</td><td><input type="hidden" name="number[]" value="'+number+'">'+number+'</td> <td class="rightfoot"><input type="hidden" name="value[]"  value="'+price+'">'+price+'</td></tr>';
+            var row= '<tr class="selected" id="row'+cont+'"><td><button type="button" class="btn btn-danger btn-sm btndelete" onclick="deleterow('+cont+');"><i class="fas fa-trash"></i></button></td><td><button type="button" class="btn btn-warning btn-sm btnedit" onclick="editrow('+cont+');"><i class="far fa-edit"></i></button></td><td><input type="hidden" name="type[]" value="'+type+'">'+type+'</td><td><input type="hidden" name="number[]" value="'+number+'">'+number+'</td> <td class="rightfoot"><input type="hidden" name="value[]"  value="'+parseInt(price)+'">'+price+'</td></tr>';
             cont++;
 
             deleterow(contedit);

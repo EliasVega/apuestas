@@ -61,7 +61,7 @@ $(document).ready(function ()
                 {data: 'type'},
                 {data: 'lottery'},
                 {data: 'number'},
-                {data: 'value', className: 'dt-body-right', render: $.fn.dataTable.render.number( '.', ',', 0, '')},
+                {data: 'value'},
             ],
             dom: 'Blfrtip',
             lengthMenu: [

@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('plays', function (Blueprint $table) {
             $table->id();
 
-            $table->integer('total');
-            $table->integer('pay');
+            $table->decimal('total',10,2);
+            $table->decimal('pay',10,2);
             $table->date('date');
             $table->enum('payment_form', ['contado', 'credito'])->default('contado');
             $table->enum('payment_method', ['efectivo', 'nequi'] )->default('efectivo');

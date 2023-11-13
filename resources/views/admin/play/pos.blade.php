@@ -57,7 +57,7 @@
     <div class="center">
         <!--DATOS company -->
         <div class="company">
-            <p><strong class="spacing">.</strong></p>
+            <p class="spacing">{{ $play->id }}</p>
         </div>
     </div>
 </body>
